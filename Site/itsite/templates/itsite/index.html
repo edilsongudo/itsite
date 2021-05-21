@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="icon" type="image/png" href="img/favicon.png" /> -->
+
+    {% block title %}
+    {% endblock %}
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/itsite/css/navbar.css">
+    <link rel="stylesheet" href="../../static/itsite/css/styles.css">
+
+    {% block style %}
+
+    {% endblock %}
+</head>
+<body>
+    <main>
+
+        <!-- HEADER -->
+          <header id="header">
+            <a id="logo" href="">Logo</a>
+            <nav id="nav">
+              <button aria-label="Abrir Menu" id="btn-mobile" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
+                <span id="hamburger"></span>
+              </button>
+              <ul id="menu" role="menu">
+                <li><a href="/">Sobre</a></li>
+                <li><a href="/">Produtos</a></li>
+                <li><a href="/">Portfólio</a></li>
+                <li><a href="/">Contato</a></li>
+              </ul>
+            </nav>
+          </header>
+
+            <div style="min-height: 100vh">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+    </main>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div>
+                <div class="socials">
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-linkedin"></i></a>
+                </div>
+
+                <div class="footer-info">
+                    <div class="rights">
+                        <p>&copy; 2021 ITIgnition</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="../../static/itsite/js/navbar.js"></script>
+    {% block js %}
+
+    {% endblock %}
+
+</body>
+</html>
