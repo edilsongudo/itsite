@@ -3,5 +3,6 @@ from itsite.views import *
 
 urlpatterns = [
     path('', home, name="home"),
-    path('hire/', hire, name="hire"),
+    path('apply/', apply, name="apply"),
+    path('thankyou/', thankyou, name="thankyou"),
 ]

@@ -1,8 +1,0 @@
-{% extends 'itsite/index.html' %}
-{% block content %}
-    <form method="post" action="{% url 'hire' %}">
-        {% csrf_token %}
-        <textarea name="message" placeholder="Message"></textarea>
-        <input type="submit">
-    </form>
-{% endblock %}
