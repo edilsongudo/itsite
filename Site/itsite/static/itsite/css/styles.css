@@ -26,7 +26,6 @@ body {
   width: 100%;
   height: auto;
   font-family: "Circular", Arial, Helvetica, sans-serif;
-  font-weight: bold;
   overflow-x: hidden;
   color: #4F6096;
   background-image: url(../img/PNG/Backgrounds/bg2.png);
@@ -43,6 +42,8 @@ body {
 
 .feature {
   max-width: 30%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .feature i {
@@ -64,13 +65,14 @@ ul {
 .section {
   background-repeat: no-repeat;
   background-size: cover;
+  text-align: center;
 }
 
 .first-section {
-  background: url("../img/PNG/Characters/man with documents.png");
+  background: url("../img/PNG/Characters/woman sitting.png");
   background-repeat: no-repeat;
-  background-position: right 150px;
-  background-size: 300px;
+  background-size: contain;
+  background-position: center;
   min-height: 100vh;
 }
 
@@ -104,7 +106,14 @@ ul {
 
 .section-content {
   padding: 30px;
+  display: flex;
+  justify-content: center;
 }
+
+.section-content2 {
+  max-width: 600px;
+}
+
 
 .title-with-paragraph {
   max-width: 50%;
@@ -129,6 +138,7 @@ ul {
   padding-left: 50px;
   padding-top: 15px;
   padding-bottom: 15px;
+  font-weight: bold;
 }
 
 .cta:hover {
