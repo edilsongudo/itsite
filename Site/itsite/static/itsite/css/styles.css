@@ -69,10 +69,10 @@ ul {
 }
 
 .first-section {
-  background: url("../img/PNG/Characters/woman sitting.png");
+  background: url("../img/PNG/Characters/man with documents.png");
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
+  background-position: right;
   min-height: 100vh;
 }
 
@@ -94,6 +94,10 @@ ul {
   background-image: url("../img/PNG/Characters/women handup.png"), linear-gradient(90deg, #7793ED, #A5B6EC);
   background-size: contain;
   background-position: center;
+}
+
+.fifth-section {
+
 }
 
 .third-section {
