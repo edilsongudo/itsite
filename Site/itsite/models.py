@@ -15,3 +15,15 @@ class ApplyModel(models.Model):
 
     def __str__(self):
         return f'{self.name} cv'
+
+
+class RequestModel(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = PhoneNumberField(default='', blank=True, null=True)
+    message = models.TextField()
+    document = models.FileField(upload_to=f'documents', blank=True, null=True)
+    date_submited = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f'{self.name} apply'

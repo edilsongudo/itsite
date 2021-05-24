@@ -2,9 +2,8 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="form">
-    <h2>Apply for a job</h2>
-    <p>We'll be more than happy to receive your job application. We will review it carefully and will get in toutch with you soon.</p>
         <form method="POST" enctype="multipart/form-data">
+            <h2>Talk to Us</h2>
             {% csrf_token %}
             {{ form|crispy }}
             <button class="cta" type="submit">Submit</button>

@@ -16,7 +16,7 @@
                     <p class="paragraph">We have a team of a wide variety of very talented developers that helps individuals and small businesses solve problems and thrive.</p>
                     <br>
                     <br>
-                    <a class="cta" href="#">TALK TO US</a>
+                    <a class="cta" href="{% url 'hire' %}">TALK TO US</a>
                     <br>
                     <br>
                     <br>
@@ -29,7 +29,7 @@
         <section class="section second-section">
             <div class="section-content">
                 <div class="features">
-                    <div class="feature" data-anime="left" style="margin-bottom: 20px;">
+                    <div class="feature" data-anime="left">
                         <i class="fas fa-check"></i>
                         <h4>High Quality</h4>
                         <p class="paragraph">We are perfectionists in every thing we do.</p>
@@ -39,7 +39,7 @@
                         <h4>Amazing Support</h4>
                         <p class="paragraph">We give long term support for our clients.</p>
                     </div>
-                    <div class="feature" data-anime="left" style="margin-top: 20px;">
+                    <div class="feature" data-anime="left">
                         <i class="fas fa-chart-line"></i>
                         <h4>For small businesses</h4>
                         <p class="paragraph">Our primarily focus are small businesses and individuals.</p>
@@ -48,12 +48,24 @@
             </div>
         </section>
 
+        <section class="section forth-section">
+            <div class="section-content">
+                <div data-anime="left" style="max-width: 600px;">
+                    <h2>About Us</h2>
+                    <p>
+                        We are a multidisciplinary software house from Lisbon.
+                        We want to create a spark in IT and ignite the results of our clients with the power of tech.
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <section class="section third-section">
             <div class="section-content">
                 <div style="text-align: center;" data-anime>
-                    <h4>A wide variety of technologies</h4>
-                    <p class="paragraph" style="margin-bottom: 20px;"><span id="stacks">Python</span></p>
-                    <a class="cta" href="#">TALK TO US</a>
+                    <h3>A wide variety of technologies</h3>
+                    <p style="margin-bottom: 20px;"><span id="stacks">Python</span></p>
+                    <a class="cta" href="{% url 'hire' %}">TALK TO US</a>
                 </div>
             </div>
         </section>

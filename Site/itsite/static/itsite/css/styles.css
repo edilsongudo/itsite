@@ -79,11 +79,27 @@ ul {
   color: white;
   display: flex;
   align-items: center;
-  height: 100vh;
+  min-height: 50vh;
+}
+
+.forth-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 50vh;
+  color: #fff;
+  background-image: url("../img/PNG/Characters/women handup.png"), linear-gradient(90deg, #7793ED, #A5B6EC);
+  background-size: contain;
+  background-position: center;
 }
 
 .third-section {
   background-image: url(../img/PNG/Backgrounds/bg9.png);
+}
+
+.third-section p {
+  font-weight: 400;
 }
 
 .section-content {
