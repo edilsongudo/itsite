@@ -3,6 +3,7 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.conf import settings
 from itsite.forms import *
+from itsite.models import *
 
 
 def send_email(subject, message, file, from_whom, to_whom):
@@ -19,6 +20,11 @@ def home(request):
 
 def thankyou(request):
     return render(request, 'itsite/thankyou.html')
+
+
+def jobs(request):
+    jobs = Post.objects.all()
+    return render(request, 'itsite/jobs.html', {'jobs': jobs})
 
 
 def apply(request):
@@ -65,3 +71,6 @@ def hire(request):
             messages.warning(request, form.errors.as_text())
 
     return render(request, 'itsite/hire.html', {'form': form})
+
+def calculator(request):
+    return render(request, 'itsite/calculator.html')

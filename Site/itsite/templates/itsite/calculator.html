@@ -1,0 +1,27 @@
+{% extends 'itsite/index.html' %}
+{% block content %}
+
+<div class="container">
+    <h2>Earnings Calculator</h2>
+    <div style="display: flex; flex-flow: column; height: 50vh; justify-content: space-around; margin-top: 90px;">
+        <label for="price">Job's price</label>
+        <input class="form-control" id="price" name="" value="350">
+        <label for="upw">After Upwork's Cut</label>
+        <input class="form-control" id="upw" name="" disabled>
+        <label for="dev">Developer's Earning (70%)</label>
+        <input class="form-control" id="dev" name="" disabled>
+        <label for="kev">Gudo's Earning (18%)</label>
+        <input class="form-control" id="kev" name="" disabled>
+        <label for="han">Hans's Earning (12%)</label>
+        <input class="form-control" id="han" name="" disabled>
+        <button class="cta" onclick="calculate()" style="width: 200px; margin-top: 10px;">Calculate</button>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block js %}
+        <script type="text/javascript" src="../../static/itsite/js/calculator.js"></script>
+{% endblock js %}
+

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'itsite',
     'crispy_forms',
-    'phonenumber_field'
+    'phonenumber_field',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
