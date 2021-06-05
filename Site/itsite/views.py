@@ -78,4 +78,4 @@ def calculator(request):
     if request.user.is_staff:
         return render(request, 'itsite/calculator.html')
     else:
-        return HttpResponse('<h1>Unauthorized<h1>', status=401)
+        return HttpResponse('<h1>Unauthorized<h1>', status=403)
