@@ -19,12 +19,12 @@ function calculate () {
     }
 
     // Calc Dev Gains
-    devEl.value = `$${(remaining * 0.7).toFixed(2)}`
-    remaining = remaining - remaining * 0.7
+    devEl.value = `$${(remaining * 0.65).toFixed(2)}`
+    remaining = remaining - remaining * 0.65
 
     // Calc Kev Gains
-    kevEl.value = `$${(remaining * 0.6).toFixed(2)}`
-    remaining = remaining * 0.4
+    kevEl.value = `$${(remaining * 0.55).toFixed(2)}`
+    remaining = remaining * 0.45
 
     // Calc Han Gains
     hanEl.value = `$${remaining.toFixed(2)}`

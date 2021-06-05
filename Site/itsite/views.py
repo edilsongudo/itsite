@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.conf import settings
 from itsite.forms import *
 from itsite.models import *
+from django.contrib.auth.decorators import login_required
 
 
 def send_email(subject, message, file, from_whom, to_whom):
@@ -72,5 +73,9 @@ def hire(request):
 
     return render(request, 'itsite/hire.html', {'form': form})
 
+
 def calculator(request):
-    return render(request, 'itsite/calculator.html')
+    if request.user.is_staff:
+        return render(request, 'itsite/calculator.html')
+    else:
+        return HttpResponse('<h1>Unauthorized<h1>', status=401)
