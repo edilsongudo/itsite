@@ -1,7 +1,11 @@
 {% extends "itsite/index.html" %}
 
+    {% block meta %}
+        <meta name="description" content="Shineit is a software house that ignite the results of businesses with passion, shine and tech.">
+    {% endblock %}
+
     {% block title %}
-        <title>ShineIT - We create digital solutions for businesses</title>
+        <title>Shine it - We create digital solutions for businesses.</title>
     {% endblock %}
 
     {% block content %}
@@ -10,13 +14,13 @@
         <section class="section first-section">
 
 
-            <div class="section-content" style="display: flex; align-items: center; justify-content: space-between;">
-                <div class="title-with-paragraph" style="margin-top: 100px;">
+            <div class="section-content">
+                <div class="title-with-paragraph">
                     <h1 class="big-title">Needing a Good Developer?</h1>
                     <p class="paragraph">We have a team of a wide variety of talented developers that helps individuals and small businesses solve problems and thrive.</p>
                     <br>
                     <br>
-                    <a class="cta" href="{% url 'hire' %}">TALK TO US</a>
+                    <a class="cta cta2" href="{% url 'hire' %}">TALK TO US</a>
                     <br>
                     <br>
                     <br>
@@ -29,20 +33,29 @@
         <section class="section second-section">
             <div class="section-content">
                 <div class="features">
+                    <div class="feature" data-anime="right">
+                        <i class="fas fa-check"></i>
+                        <p class="paragraph">Our focus is on permanent communication with our costumer and constantly improving our processes to achieve the best results.</p>
+                    </div>
                     <div class="feature" data-anime="left">
                         <i class="fas fa-check"></i>
-                        <h5>High Quality</h5>
-                        <p class="paragraph">We are perfectionists in every thing we do.</p>
+                        <p class="paragraph">We understand that we need to pick the best solution accordingly to your present and future needs and that software is a living entity and needs to scale as your business grows.</p>
                     </div>
                     <div class="feature" data-anime="right">
-                        <i class="fas fa-hands-helping"></i>
-                        <h5>Amazing Support</h5>
-                        <p class="paragraph">We give long term support for our clients.</p>
+                        <i class="fas fa-check"></i>
+                        <p class="paragraph">We are proud of giving amazing support, not just for big companies but focus on small businesses and individuals too.</p>
                     </div>
                     <div class="feature" data-anime="left">
-                        <i class="fas fa-chart-line"></i>
-                        <h5>For small businesses</h5>
-                        <p class="paragraph">Our primarily focus are small businesses and individuals.</p>
+                        <i class="fas fa-check"></i>
+                        <p class="paragraph">We understand that businesses need traffic and websites need to be optimized to rank high in search engines.</p>
+                    </div>
+                    <div class="feature" data-anime="right">
+                        <i class="fas fa-check"></i>
+                        <p class="paragraph">We understand the importance of quality content in a website, not just for SEO optimization but for converting clients and improving results. We have teams of talented content writers and digital marketers that work along with our developer teams to deliver better solutions.</p>
+                    </div>
+                    <div class="feature" data-anime="left">
+                        <i class="fas fa-check"></i>
+                        <p class="paragraph">We know the importance of cybersecurity. With that in mind we make our softwares as solid as we can.</p>
                     </div>
                 </div>
             </div>
@@ -53,8 +66,8 @@
                 <div class="section-content2" data-anime="left">
                     <h2>About Us</h2>
                     <p>
-                        We are a multidisciplinary software house from Lisbon.
-                        We want to create a spark in IT and ignite the results of our clients with the power of tech.
+                        We are a multidisciplinary software house with driven collaborates that like to work togheter to always bring the best product possible.
+                        Our goal is to ignite the results of our clients with the power of tech let, and our spark in IT.
                     </p>
                 </div>
             </div>
@@ -62,15 +75,25 @@
 
         <section class="section fitht-section">
             <div class="section-content">
-                <div class="section-content2">
-                    <img src="../../static/itsite/img/PNG/Objects/phone.png" style="height: 48px;">
+                <div class="section-content2" data-anime="right">
+                    <img src="../../static/itsite/img/PNG/Objects/tools.png">
                     <p>
-                        You’ll be always in touch with a project manager with updates provided and questions answered at every phase of the project.
+                        We like to create things with good functionality. But what we enjoy even more is creating those things with a beautiful UI/UX, that users like to see.
                     </p>
                     <br>
-                    <img src="../../static/itsite/img/PNG/Objects/rocket.png" style="height: 48px;">
-                    <p>Our mission is to empower people and customers to achieve the best results</p>
+
+                    <img src="../../static/itsite/img/PNG/Objects/phone.png">
+                    <p>
+                        As our costumer you’ll be always in touch with us with updates provided and questions answered during all stages of development.
+                    </p>
                     <br>
+
+                    <img src="../../static/itsite/img/PNG/Objects/rocket.png">
+                    <p>
+                        Our mission is to empower people and customers to achieve the best results.
+                    </p>
+                    <br>
+
                 </div>
 
             </div>
@@ -80,8 +103,8 @@
             <div class="section-content">
                 <div class="section-content2" data-anime>
                     <h3>A wide variety of technologies</h3>
-                    <p style="margin-bottom: 20px;"><span id="stacks">Python</span></p>
-                    <a class="cta" href="{% url 'hire' %}">TALK TO US</a>
+                    <p><span id="stacks">Python</span></p>
+                    <a class="cta cta2" href="{% url 'hire' %}">TALK TO US</a>
                 </div>
             </div>
         </section>

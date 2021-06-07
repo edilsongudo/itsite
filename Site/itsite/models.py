@@ -10,9 +10,9 @@ class ApplyModel(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = PhoneNumberField(default='')
-    linkedin_profile_url = models.URLField(
+    linkedin_url = models.CharField(
         max_length=100, blank=True, null=True)
-    github_profile_url = models.URLField(max_length=100, blank=True, null=True)
+    github_url = models.CharField(max_length=100, blank=True, null=True)
     cv = models.FileField(upload_to=f'cvs')
     date_submited = models.DateTimeField(default=timezone.now)
 

@@ -1,6 +1,10 @@
 {% extends 'itsite/index.html' %}
 {% load crispy_forms_tags %}
 
+{% block meta %}
+    <meta name="description" content="Contact page.">
+{% endblock %}
+
 {% block title %}
     <title>ShineIT - Contact Us</title>
 {% endblock %}
@@ -8,10 +12,10 @@
 {% block content %}
     <div class="form">
         <form method="POST" enctype="multipart/form-data">
-            <h2>Talk to Us</h2>
+            <h1>Talk to Us</h1>
             {% csrf_token %}
             {{ form|crispy }}
-            <button class="cta" type="submit">Submit</button>
+            <button class="cta cta2" type="submit">Submit</button>
         </form>
     </div>
 

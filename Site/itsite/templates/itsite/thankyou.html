@@ -1,5 +1,10 @@
 {% extends 'itsite/index.html' %}
 
+{% block meta %}
+    <meta name="description" content="Shine it Thank You Page.">
+    <meta name="robots" content="noindex">
+{% endblock %}
+
 {% block title %}
     <title>ShineIT - Thank You</title>
 {% endblock %}
@@ -9,7 +14,7 @@
     <div style="max-width: 70%; margin: 0 auto; text-align: center; font-weight: 400">
         <h1>Thank You</h1>
         <p>Your form was submited sucessfully. We will get in touch with you soon.</p>
-        <a class="cta" href="{% url 'home' %}">Home</a>
+        <a class="cta cta1" href="{% url 'home' %}">Home</a>
     </div>
 
 {% endblock %}

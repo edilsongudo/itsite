@@ -25,7 +25,8 @@ SECRET_KEY = 'yo*bx8ok*h@jq+!5bi1cm!2p9w00qj)u&1nhw**-wo0s-g9y&r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.43.143']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                 '192.168.43.143', 'www.shineitpro.com']
 
 
 # Application definition
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'itsite',
     'crispy_forms',
     'phonenumber_field',
