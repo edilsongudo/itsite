@@ -5,6 +5,21 @@ from django.conf import settings
 from itsite.forms import *
 from itsite.models import *
 from django.contrib.auth.decorators import login_required
+from twilio.rest import Client
+from django.conf import settings
+import os
+
+
+def send_message(body):
+    try:
+        print('Sending Message...')
+        account_sid = settings.TWILIO_ACCOUNT_SID
+        auth_token = settings.TWILIO_AUTH_TOKEN
+        client = Client(account_sid, auth_token)
+        message = client.messages.create(
+            body=body, from_=settings.TWILIO_PHONE_NUMBER, to=settings.PHONE_NUMBER)
+    except Exception as e:
+        print(e)
 
 
 def send_email(subject, message, file, from_whom, to_whom):
@@ -40,8 +55,14 @@ def apply(request):
             from_whom = settings.EMAIL_HOST_USER
             to_whom = [settings.EMAIL_HOST_USER]
             file = request.FILES['cv']
+            extension = os.path.splitext(file.name)[1]
+            valid_extensions = ['.pdf', '.doc', '.docx']
+            if extension not in valid_extensions:
+                messages.warning(request, 'Uploaded File type not Supported')
+                return render(request, 'itsite/apply.html', {'form': form})
             send_email(subject=subject, message=message,
                        file=file, from_whom=from_whom, to_whom=to_whom)
+            send_message(f"New form submission ar shine it.")
             form.save()
             return redirect('thankyou')
         else:
@@ -64,8 +85,15 @@ def hire(request):
             file = False
             if request.FILES:
                 file = request.FILES['document']
+                extension = os.path.splitext(file.name)[1]
+                valid_extensions = ['.pdf', '.doc', '.docx']
+                if extension not in valid_extensions:
+                    messages.warning(
+                        request, 'Uploaded File type not Supported')
+                    return render(request, 'itsite/hire.html', {'form': form})
             send_email(subject=subject, message=message,
                        file=file, from_whom=from_whom, to_whom=to_whom)
+            send_message(f"New form submission ar shine it.")
             form.save()
             return redirect('thankyou')
         else:
@@ -78,4 +106,4 @@ def calculator(request):
     if request.user.is_staff:
         return render(request, 'itsite/calculator.html')
     else:
-        return HttpResponse('<h1>Unauthorized<h1>', status=403)
+        return HttpResponse('<h1>Forbidden<h1>', status=403)

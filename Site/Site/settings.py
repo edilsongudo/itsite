@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -138,7 +139,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'edilson4football@gmail.com'
 
-with open('secret.secret', 'r') as f:
-    secret = f.read().strip()
+with open('secret.json', 'r') as f:
+    secret = json.load(f)
 
-EMAIL_HOST_PASSWORD = secret
+EMAIL_HOST_PASSWORD = secret['EMAIL_HOST_PASSWORD']
+
+TWILIO_ACCOUNT_SID = secret['TWILIO_ACCOUNT_SID']
+TWILIO_AUTH_TOKEN = secret['TWILIO_AUTH_TOKEN']
+TWILIO_PHONE_NUMBER = secret['TWILIO_PHONE_NUMBER']
+PHONE_NUMBER = secret['PHONE_NUMBER']
