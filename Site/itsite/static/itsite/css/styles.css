@@ -93,11 +93,18 @@ ul {
   color: #fff;
   background-image: url("../img/PNG/Characters/women handup.png"), linear-gradient(90deg, #7793ED, #A5B6EC);
   background-size: contain;
-  background-position: center;
+  background-position: left;
 }
 
 .fifth-section {
 
+}
+
+.sixth-section {
+  background-image: url("../img/PNG/Characters/man with map.png"), linear-gradient(90deg, #7793ED, #A5B6EC);
+  color: white;
+  background-size: contain;
+  background-position: right;
 }
 
 .third-section {
@@ -169,6 +176,19 @@ ul {
   box-shadow: 1px 1px 1px  #A5B6EC;
   color: #7793ED;
 }
+
+
+.cta3 {
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+}
+
+.cta3:hover {
+  background: #fff;
+  color: #7793ED;
+}
+
 
 
 @media only screen and (max-width: 800px) {
