@@ -1,7 +1,7 @@
 {% extends 'itsite/index.html' %}
 
 {% block meta %}
-    <meta name="robots" content="noindex">
+        <meta name="description" content="See all job offers at Shine it.">
 {% endblock %}
 
 {% block title %}
@@ -21,7 +21,7 @@
                     <p class="jobs-date">Posted: {{ job.date_posted|date:"F d, Y" }}</p>
                     <p class="jobs-date">Location: Remote</p>
                 </div>
-                <a class="cta cta3" href="{% url 'job' job.pk %}">See</a>
+                <a class="cta cta3" href="{% url 'job' job.pk %}">VIEW</a>
             </div>
         {% endfor %}
     </div>
