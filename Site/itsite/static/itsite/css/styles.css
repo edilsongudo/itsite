@@ -76,6 +76,10 @@ ul {
   min-height: 100vh;
 }
 
+.first-section .section-content {
+  margin-top: 10%;
+}
+
 .second-section {
   background-image: linear-gradient(90deg, #7793ED, #A5B6EC);
   color: white;
@@ -317,4 +321,51 @@ footer i {
 
 .section-content2 img {
   height: 48px;
+}
+
+.custom-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.job, .jobs {
+  margin-top: 50px;
+}
+
+.job-card {
+  background-image: linear-gradient(90deg, #7793ED, #A5B6EC);
+  padding: 30px;
+  border-radius: 6px;
+  color: white;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.job-card a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.job-card p {
+}
+
+.jobs-date {
+  font-size: 12px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.ctadiv {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  .custom-container {
+    width: 90%;
+  }
 }

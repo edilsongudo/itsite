@@ -38,6 +38,10 @@ def thankyou(request):
     return render(request, 'itsite/thankyou.html')
 
 
+def job(request, pk):
+    job = Post.objects.get(pk=pk)
+    return render(request, 'itsite/job.html', {'job': job})
+
 def jobs(request):
     jobs = Post.objects.all()
     return render(request, 'itsite/jobs.html', {'jobs': jobs})
