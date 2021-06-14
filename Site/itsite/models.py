@@ -4,6 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
 from django.urls import reverse
 from ckeditor.fields import RichTextField
+from uuslug import uuslug
 
 
 class ApplyModel(models.Model):
@@ -37,9 +38,14 @@ class Post(models.Model):
     content = RichTextField(blank=False, null=False)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    slug = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = uuslug(self.title, instance=self)
+        super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})

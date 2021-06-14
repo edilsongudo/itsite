@@ -21,7 +21,7 @@
                     <p class="jobs-date">Posted: {{ job.date_posted|date:"F d, Y" }}</p>
                     <p class="jobs-date">Location: Remote</p>
                 </div>
-                <a class="cta cta3" href="{% url 'job' job.pk %}">VIEW</a>
+                <a class="cta cta3" href="{% url 'job' job.slug %}">VIEW</a>
             </div>
         {% endfor %}
     </div>

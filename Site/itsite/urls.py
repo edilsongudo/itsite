@@ -13,7 +13,7 @@ urlpatterns = [
     path('hire/', hire, name="hire"),
     path('thankyou/', thankyou, name="thankyou"),
     path('jobs/', jobs, name="jobs"),
-    path('job/<int:pk>', job, name="job"),
+    path('job/<str:slug>', job, name="job"),
     path('calc/', calculator, name="calculator"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps})
 ]
