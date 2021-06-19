@@ -369,3 +369,7 @@ footer i {
     width: 90%;
   }
 }
+
+.content {
+  min-height: 100vh;
+}

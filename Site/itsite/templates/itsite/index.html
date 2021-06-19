@@ -16,14 +16,15 @@
     {% block title %}
     {% endblock %}
 
+
     <link rel="stylesheet" href="../../static/itsite/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="../../static/itsite/css/navbar.css">
     <link rel="stylesheet" href="../../static/itsite/css/styles.css">
-
     {% block style %}
 
     {% endblock %}
+
 </head>
 <body>
     <main>
@@ -53,7 +54,7 @@
               {% endif %}
             </div>
 
-            <div style="min-height: 100vh">
+            <div class="content">
                 {% block content %}
                 {% endblock %}
             </div>

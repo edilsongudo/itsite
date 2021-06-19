@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseForbidden
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.conf import settings
@@ -8,11 +9,11 @@ from django.contrib.auth.decorators import login_required
 from twilio.rest import Client
 from django.conf import settings
 import os
+import phonenumbers
 
 
 def send_message(body):
     try:
-        print('Sending Message...')
         account_sid = settings.TWILIO_ACCOUNT_SID
         auth_token = settings.TWILIO_AUTH_TOKEN
         client = Client(account_sid, auth_token)
@@ -23,15 +24,37 @@ def send_message(body):
 
 
 def send_email(subject, message, file, from_whom, to_whom):
-    email = EmailMessage(subject, message, from_whom,
-                         to_whom, headers={'Reply-To': to_whom})
-    if file:
-        email.attach(file.name, file.read(), file.content_type)
-    email.send()
+    try:
+        email = EmailMessage(subject, message, from_whom,
+                             to_whom, headers={'Reply-To': to_whom})
+        if file:
+            email.attach(file.name, file.read(), file.content_type)
+        email.send()
+    except Exception as e:
+        print(e)
+
+
+def get_ip(request):
+    address = request.META.get('HTTP_X_FORWARDED_FOR')
+    if address:
+        ip = address.split(',')[-1].strip()
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
+def set_cookies_in_response(request, response):
+    referer = request.META.get('HTTP_REFERER')
+    if referer is not None:
+        if not 'referer' in request.COOKIES:
+            response.set_cookie("referer", referer)
+    return response
 
 
 def home(request):
-    return render(request, 'itsite/home.html')
+    response = render(request, 'itsite/home.html')
+    set_cookies_in_response(request, response)
+    return set_cookies_in_response(request, response)
 
 
 def thankyou(request):
@@ -40,12 +63,14 @@ def thankyou(request):
 
 def job(request, slug):
     job = Post.objects.get(slug=slug)
-    return render(request, 'itsite/job.html', {'job': job})
+    response = render(request, 'itsite/job.html', {'job': job})
+    return set_cookies_in_response(request, response)
+
 
 def jobs(request):
     jobs = Post.objects.all()
-    return render(request, 'itsite/jobs.html', {'jobs': jobs})
-
+    response = render(request, 'itsite/jobs.html', {'jobs': jobs})
+    return set_cookies_in_response(request, response)
 
 def apply(request):
 
@@ -54,6 +79,10 @@ def apply(request):
         form = ApplyForm(request.POST, request.FILES)
 
         if form.is_valid():
+            z = phonenumbers.parse(form.cleaned_data['full_number'], None)
+            if not phonenumbers.is_valid_number(z):
+                messages.warning(request, 'Please type a valid phone number')
+                return render(request, 'itsite/apply.html', {'form': form})
             subject = "New cv submission"
             message = f"Email: {form.cleaned_data['email']}\nName: {form.cleaned_data['name']}"
             from_whom = settings.EMAIL_HOST_USER
@@ -67,6 +96,9 @@ def apply(request):
             send_email(subject=subject, message=message,
                        file=file, from_whom=from_whom, to_whom=to_whom)
             send_message(f"New form submission ar shine it.")
+            referer = request.COOKIES.get('referer')
+            if referer is not None:
+                form.instance.referer = referer
             form.save()
             return redirect('thankyou')
         else:
@@ -82,6 +114,10 @@ def hire(request):
         form = RequestForm(request.POST, request.FILES)
 
         if form.is_valid():
+            z = phonenumbers.parse(form.cleaned_data['full_number'], None)
+            if not phonenumbers.is_valid_number(z):
+                messages.warning(request, 'Please type a valid phone number')
+                return render(request, 'itsite/hire.html', {'form': form})
             subject = "New job request"
             message = f"Email: {form.cleaned_data['email']}\nName: {form.cleaned_data['name']}"
             from_whom = settings.EMAIL_HOST_USER
@@ -98,6 +134,9 @@ def hire(request):
             send_email(subject=subject, message=message,
                        file=file, from_whom=from_whom, to_whom=to_whom)
             send_message(f"New form submission ar shine it.")
+            referer = request.COOKIES.get('referer')
+            if referer is not None:
+                form.instance.referer = referer
             form.save()
             return redirect('thankyou')
         else:
@@ -110,4 +149,8 @@ def calculator(request):
     if request.user.is_staff:
         return render(request, 'itsite/calculator.html')
     else:
-        return HttpResponse('<h1>Forbidden<h1>', status=403)
+        return HttpResponseForbidden()
+
+
+def error_404_view(request, exception):
+    return render(request, 'itsite/404.html')

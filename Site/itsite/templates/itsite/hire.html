@@ -3,20 +3,68 @@
 
 {% block meta %}
     <meta name="description" content="Contact page.">
+    {{ form.media.css }}
 {% endblock %}
 
 {% block title %}
     <title>ShineIT - Contact Us</title>
 {% endblock %}
 
+{% block style %}
+  <link rel="stylesheet" href="../../static/itsite/intl-tel-input-17.0.0/build/css/intlTelInput.css">
+
+  <style type="text/css">
+    .iti__flag {background-image: url("../../static/itsite/intl-tel-input-17.0.0/build/img/flags.png");}
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .iti__flag {background-image: url("../../static/itsite/intl-tel-input-17.0.0/build/img/flags@2x.png");}
+    }
+  </style>
+{% endblock %}
+
+
 {% block content %}
     <div class="form">
         <form method="POST" enctype="multipart/form-data">
             <h1>Talk to Us</h1>
             {% csrf_token %}
-            {{ form|crispy }}
+            {{ form.name|as_crispy_field }}
+            {{ form.email|as_crispy_field }}
+            <input class="form-control" id="phone" name="phone" type="tel">
+            {{ form.message|as_crispy_field }}
+            {{ form.document }}
             <button class="cta cta2" type="submit">Submit</button>
         </form>
     </div>
 
+{% endblock %}
+
+{% block js %}
+    <script src="../../static/itsite/intl-tel-input-17.0.0/build/js/intlTelInput.js"></script>
+    <script>
+        var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+          // allowDropdown: false,
+          // autoHideDialCode: false,
+          // autoPlaceholder: "off",
+          // dropdownContainer: document.body,
+          // excludeCountries: ["us"],
+          // formatOnDisplay: false,
+          geoIpLookup: function(callback) {
+            $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+              var countryCode = (resp && resp.country) ? resp.country : "";
+              callback(countryCode);
+            });
+          },
+          hiddenInput: "full_number",
+          initialCountry: "auto",
+          // localizedCountries: { 'de': 'Deutschland' },
+          // nationalMode: false,
+          // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+          // placeholderNumberType: "MOBILE",
+          // preferredCountries: ['cn', 'jp'],
+          separateDialCode: true,
+          utilsScript: "../../static/itsite/intl-tel-input-17.0.0/build/js/utils.js",
+        });
+    </script>
 {% endblock %}
