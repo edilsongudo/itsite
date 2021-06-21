@@ -3,7 +3,9 @@
 *.pot
 *.pyc
 *.secret
+*.mmdb
 __pycache__
 db.sqlite3
 secret.json
 media
+production_settings.py

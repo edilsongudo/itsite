@@ -10,6 +10,7 @@ from twilio.rest import Client
 from django.conf import settings
 import os
 import phonenumbers
+from .utils import get_geo
 
 
 def send_message(body):
@@ -43,6 +44,16 @@ def get_ip(request):
     return ip
 
 
+def get_location(request):
+    try:
+        ip = get_ip(request)
+        country, city, lat, lon = get_geo(ip)
+        return country
+    except Exception as e:
+        print(e)
+        return ''
+
+
 def set_cookies_in_response(request, response):
     referer = request.META.get('HTTP_REFERER')
     if referer is not None:
@@ -52,6 +63,7 @@ def set_cookies_in_response(request, response):
 
 
 def home(request):
+    print(get_location(request))
     response = render(request, 'itsite/home.html')
     set_cookies_in_response(request, response)
     return set_cookies_in_response(request, response)
@@ -95,7 +107,7 @@ def apply(request):
                 return render(request, 'itsite/apply.html', {'form': form})
             send_email(subject=subject, message=message,
                        file=file, from_whom=from_whom, to_whom=to_whom)
-            send_message(f"New form submission ar shine it.")
+            send_message(f"New form submission at shine it.")
             referer = request.COOKIES.get('referer')
             if referer is not None:
                 form.instance.referer = referer
@@ -133,7 +145,7 @@ def hire(request):
                     return render(request, 'itsite/hire.html', {'form': form})
             send_email(subject=subject, message=message,
                        file=file, from_whom=from_whom, to_whom=to_whom)
-            send_message(f"New form submission ar shine it.")
+            send_message(f"New form submission at shine it.")
             referer = request.COOKIES.get('referer')
             if referer is not None:
                 form.instance.referer = referer
