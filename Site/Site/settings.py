@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'itsite',
+    'blog',
     'crispy_forms',
     'phonenumber_field',
     'ckeditor',
