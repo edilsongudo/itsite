@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap');
+
+body {
+  background: #fff;
+}
+
+.blog-posts {
+  max-width: 600px;
+  margin-right: auto;
+  text-align: center;
+}
+
+.blog-post {
+  padding: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog-title {
+  font-size: 2rem;
+  font-family: sans-serif;
+  color: black;
+  font-family: 'Merriweather', serif;
+}
+
+.blog-date-posted {
+    font-family: 'Merriweather', serif;
+    font-size: 0.8rem;
+    color: grey;
+}
+
+.blog-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.blog-post p {
+  color: grey;
+}
+
+@media only screen and (max-width: 600px) {
+  .blog-post {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

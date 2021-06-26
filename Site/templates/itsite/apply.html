@@ -1,0 +1,71 @@
+{% extends 'itsite/index.html' %}
+{% load crispy_forms_tags %}
+
+{% block meta %}
+    <meta name="description" content="Shine it is hiring. Send us your cv and apply for a job position here.">
+    {{ form.media.css }}
+{% endblock %}
+
+{% block title %}
+    <title>ShineIT - Apply</title>
+{% endblock %}
+
+{% block style %}
+  <link rel="stylesheet" href="../../static/itsite/intl-tel-input-17.0.0/build/css/intlTelInput.css">
+
+  <style type="text/css">
+    .iti__flag {background-image: url("../../static/itsite/intl-tel-input-17.0.0/build/img/flags.png");}
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .iti__flag {background-image: url("../../static/itsite/intl-tel-input-17.0.0/build/img/flags@2x.png");}
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+    <div class="form">
+    <h1>Apply for a job</h1>
+    <p>We'll be more than happy to receive your job application. We will review it carefully and will get in touch with you soon.</p>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.name|as_crispy_field }}
+            {{ form.email|as_crispy_field }}
+            <input class="form-control" id="phone" name="phone" type="tel">
+            {{ form.linkedin_url|as_crispy_field }}
+            {{ form.github_url|as_crispy_field }}
+            {{ form.cv }}
+            <button class="cta cta2" type="submit">Apply</button>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="../../static/itsite/intl-tel-input-17.0.0/build/js/intlTelInput.js"></script>
+    <script>
+        var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+          // allowDropdown: false,
+          // autoHideDialCode: false,
+          // autoPlaceholder: "off",
+          // dropdownContainer: document.body,
+          // excludeCountries: ["us"],
+          // formatOnDisplay: false,
+          // geoIpLookup: function(callback) {
+          //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+          //     var countryCode = (resp && resp.country) ? resp.country : "";
+          //     callback(countryCode);
+          //   });
+          // },
+          hiddenInput: "full_number",
+          initialCountry: "pt",
+          // localizedCountries: { 'de': 'Deutschland' },
+          // nationalMode: false,
+          // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+          // placeholderNumberType: "MOBILE",
+          // preferredCountries: ['cn', 'jp'],
+          separateDialCode: true,
+          utilsScript: "../../static/itsite/intl-tel-input-17.0.0/build/js/utils.js",
+        });
+    </script>
+{% endblock %}

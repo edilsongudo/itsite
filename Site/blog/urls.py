@@ -9,6 +9,7 @@ sitemaps = {
 
 urlpatterns = [
     path('', blog, name="blog"),
+    path('<str:slug>/', blogpost, name="blogpost"),
 ]
 
 
