@@ -10,5 +10,5 @@ def blog(request):
 
 def blogpost(request, slug):
     post = BlogPost.objects.get(slug=slug)
-    response = render(request, 'blog/blogpost.html', {'post': post})
+    response = render(request, 'blog/blog-single.html', {'post': post})
     return response
